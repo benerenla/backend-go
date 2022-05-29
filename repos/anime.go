@@ -2,7 +2,6 @@ package repos
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type AnimeResponse struct {
@@ -26,8 +25,7 @@ type Comments struct {
 	AuthorAvatar string `json:"authorAvatar"`
 }
 type Anime struct {
-	Id        primitive.ObjectID `json:"id,omitempty"`
-	Serie     string             `json:"name,omitempty" validate:"required"`
-	TotalLike int                `json:"totalLike,omitempty"`
-	Episodes  []Episodes         `json:"episodes,omitempty" validate:"required"`
+	Serie     string     `json:"name,omitempty" validate:"required"`
+	TotalLike int        `json:"totalLike,omitempty"`
+	Episodes  []Episodes `json:"episodes,omitempty" validate:"required"`
 }

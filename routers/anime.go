@@ -10,7 +10,6 @@ import (
 	"github.com/Constani/main/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -43,7 +42,6 @@ func Getanim(c *fiber.Ctx) error {
 		epo1,
 	}
 	newAnime := repos.Anime{
-		Id:        primitive.NewObjectID(),
 		Serie:     "sadasdad",
 		TotalLike: 12,
 		Episodes:  episodes,
