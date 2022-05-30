@@ -15,6 +15,8 @@ type Episodes struct {
 	EpisodeName      string     `json:"episodeName"`
 	EpisodesDuration string     `json:"episodesDuration"`
 	Likes            int        `json:"likes"`
+	Avatar           string     `json"avatar"`
+	Description      string     `json:"description"`
 	VideoURL         string     `json:"videoURL"`
 	Comments         []Comments `json:"Comments"`
 }
@@ -27,6 +29,8 @@ type Comments struct {
 type Anime struct {
 	Id        string     `json:"Id,omitempty" bson:"Id" validate:"required"`
 	Serie     string     `json:"name,omitempty" validate:"required"`
+	Avatar    string     `json:"avatar, omitempty" validate:"required"`
+	Banner    string     `json:"banner, omitempty" validate:"required"`
 	TotalLike int        `json:"totalLike,omitempty"`
 	Episodes  []Episodes `json:"episodes,omitempty" validate:"required"`
 }

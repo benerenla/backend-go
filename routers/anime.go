@@ -34,6 +34,8 @@ func CreateAnim(c *fiber.Ctx) error {
 	newAnime := repos.Anime{
 		Id:        anime.Id,
 		Serie:     anime.Serie,
+		Avatar:    anime.Avatar,
+		Banner:    anime.Banner,
 		TotalLike: anime.TotalLike,
 		Episodes:  anime.Episodes,
 	}
