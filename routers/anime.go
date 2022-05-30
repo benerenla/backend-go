@@ -41,6 +41,8 @@ func CreateAnim(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println("Hata var", err.Error())
 	}
+	var message = "**" + newAnime.Serie + "** adında yeni anime siteye eklendi!"
+	utils.SendMessageCreatedAnime(message)
 	return c.Status(http.StatusCreated).JSON(repos.AnimeResponse{Status: http.StatusCreated, Message: "Created", Data: &fiber.Map{"data": result}})
 }
 func GetAnimeByName(c *fiber.Ctx) error {

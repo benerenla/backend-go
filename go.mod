@@ -5,6 +5,9 @@ go 1.18
 require github.com/gofiber/fiber/v2 v2.34.0
 
 require (
+	github.com/DisgoOrg/disgohook v1.4.4 // indirect
+	github.com/DisgoOrg/log v1.1.0 // indirect
+	github.com/DisgoOrg/restclient v1.2.8 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/apsdehal/go-logger v0.0.0-20190515212710-b0d6ccfee0e6 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect

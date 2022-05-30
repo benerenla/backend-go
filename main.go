@@ -19,7 +19,7 @@ func main() {
 	os.Setenv("LOG_FILE", "log.log")
 	app.Get("/", routers.GetMain)
 	utils.Connect()
-
+	utils.SendMessage("Backend başarıyla aktif hale geldi.", "Site Başlatıldı", "https://atlasch.me")
 	api := app.Group("/api")
 
 	v1 := api.Group("/v1", func(c *fiber.Ctx) error {

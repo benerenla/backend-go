@@ -7,7 +7,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/Constani/main/logger"
 	"github.com/Constani/main/repos"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -18,7 +17,7 @@ import (
 func EnvMongo() string {
 	err := godotenv.Load()
 	if err != nil {
-		logger.Logger.FatalF(".env dosyası yuklenmedi %s", err)
+		fmt.Println("Hata var", err)
 	}
 
 	return os.Getenv("MONGODB_URL")

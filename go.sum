@@ -1,3 +1,9 @@
+github.com/DisgoOrg/disgohook v1.4.4 h1:6xU+nRtyCYX7RyKvRnroJE8JMv+YIrQEMBDGUjBGDlQ=
+github.com/DisgoOrg/disgohook v1.4.4/go.mod h1:l7r9dZgfkA3KiV+ErxqweKaknnskmzZO+SRTNHvJTUU=
+github.com/DisgoOrg/log v1.1.0 h1:a6hLfVSDuTFJc5AKQ8FDYQ5TASnwk3tciUyXThm1CR4=
+github.com/DisgoOrg/log v1.1.0/go.mod h1:Qihgz6fax3JCfuO7vxVavL0LyHS0sUdQ9OmykQ2fiQs=
+github.com/DisgoOrg/restclient v1.2.8 h1:0Kv2g2bNYUvAAeIpJ1oNHorRcj5z6qkO2kOlm4R7cAs=
+github.com/DisgoOrg/restclient v1.2.8/go.mod h1:2pc/htya/5kjxvWNYya98sb8B4mexobxmWvhTiWPt94=
 github.com/andybalholm/brotli v1.0.4 h1:V7DdXeJtZscaqfNuAdSRuRFzuiKlHSC/Zh3zl9qY3JY=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/apsdehal/go-logger v0.0.0-20190515212710-b0d6ccfee0e6 h1:qISSdUEX4sjDHfdD/vf65fhuCh3pIhiILDB7ktjJrqU=
