@@ -4,29 +4,22 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
-	"github.com/Constani/main/repos"
-	"github.com/joho/godotenv"
+	"github.com/Constani/main/libs"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func EnvMongo() string {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Println("Hata var", err)
-	}
+// Get Mongo URL in .env
 
-	return os.Getenv("MONGODB_URL")
-}
+// database.go, Get collection and client
+var col *mongo.Collection = libs.GetCollection(libs.DB, "constani")
 
-var col *mongo.Collection = GetCollection(DB, "constani")
-
-func GetAllData() []repos.Anime {
-	var results []repos.Anime
+// GetAlldata = It provides all anime data to us.
+func GetAllData() []libs.Anime {
+	var results []libs.Anime
 
 	findOptions := options.Find()
 	findOptions.SetLimit(100)
@@ -37,7 +30,7 @@ func GetAllData() []repos.Anime {
 	}
 	defer cur.Close(ctx)
 	for cur.Next(ctx) {
-		var result repos.Anime
+		var result libs.Anime
 		err := cur.Decode(&result)
 		if err != nil {
 			log.Fatal(err)
@@ -46,8 +39,10 @@ func GetAllData() []repos.Anime {
 	}
 	return results
 }
-func GetAnimeById(ıd string) repos.Anime {
-	var result repos.Anime
+
+// GetAnimebyId = <utils>.GetAnimeById("animeId")
+func GetAnimeById(ıd string) libs.Anime {
+	var result libs.Anime
 	filter := bson.D{{"Id", ıd}}
 	err := col.FindOne(context.TODO(), filter).Decode(&result)
 	if err != nil {

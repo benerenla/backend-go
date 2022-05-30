@@ -1,4 +1,4 @@
-package utils
+package libs
 
 import (
 	"context"
@@ -10,6 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// Connect Mongo DB
 func Connect() *mongo.Client {
 	client, err := mongo.NewClient(options.Client().ApplyURI(EnvMongo()))
 	if err != nil {
@@ -24,14 +25,16 @@ func Connect() *mongo.Client {
 
 	err = client.Ping(ctx, nil)
 	if err != nil {
-		log.Fatal("Hata")
+		log.Fatal("Ping Var")
 	}
 	fmt.Printf("Connected Mongodb")
 	return client
 }
 
+// export mongo db client
 var DB *mongo.Client = Connect()
 
+// Get Collection in mongodb
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	collection := client.Database("constani").Collection(collectionName)
 	return collection
