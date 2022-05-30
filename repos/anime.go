@@ -25,6 +25,7 @@ type Comments struct {
 	AuthorAvatar string `json:"authorAvatar"`
 }
 type Anime struct {
+	Id        string     `json:"Id,omitempty" bson:"Id" validate:"required"`
 	Serie     string     `json:"name,omitempty" validate:"required"`
 	TotalLike int        `json:"totalLike,omitempty"`
 	Episodes  []Episodes `json:"episodes,omitempty" validate:"required"`

@@ -17,38 +17,32 @@ var constaniCol *mongo.Collection = utils.GetCollection(utils.DB, "constani")
 var validate = validator.New()
 
 func Getanim(c *fiber.Ctx) error {
+	return c.Status(http.StatusAccepted).JSON(utils.GetAllData())
+}
+func CreateAnim(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	var anime repos.Anime
 	defer cancel()
 
-	Eponime := repos.Comments{
-		Content:      "sa",
-		AuthorID:     760499240966684683,
-		AuthorName:   "Atlas",
-		AuthorAvatar: "sa",
+	if err := c.BodyParser(&anime); err != nil {
+		return c.Status(http.StatusBadRequest).JSON(repos.AnimeResponse{Status: http.StatusBadRequest, Message: "error", Data: &fiber.Map{"data": err.Error()}})
 	}
 
-	comments := []repos.Comments{Eponime}
-
-	epo1 := repos.Episodes{
-		EpisodeNumber:    12,
-		EpisodeName:      "sa",
-		EpisodesDuration: "asdsadasd",
-		Likes:            12,
-		VideoURL:         "http:",
-		Comments:         comments,
-	}
-
-	episodes := []repos.Episodes{
-		epo1,
+	if valodationerr := validate.Struct(&anime); valodationerr != nil {
+		return c.Status(http.StatusBadRequest).JSON(repos.AnimeResponse{Status: http.StatusBadRequest, Message: "error", Data: &fiber.Map{"data": valodationerr.Error()}})
 	}
 	newAnime := repos.Anime{
-		Serie:     "sadasdad",
-		TotalLike: 12,
-		Episodes:  episodes,
+		Id:        anime.Id,
+		Serie:     anime.Serie,
+		TotalLike: anime.TotalLike,
+		Episodes:  anime.Episodes,
 	}
 	result, err := constaniCol.InsertOne(ctx, newAnime)
 	if err != nil {
-		fmt.Printf("Hata var")
+		fmt.Println("Hata var", err.Error())
 	}
-	return c.Status(http.StatusCreated).JSON(repos.AnimeResponse{Status: http.StatusCreated, Message: "Sucsess", Data: &fiber.Map{"data": result}})
+	return c.Status(http.StatusCreated).JSON(repos.AnimeResponse{Status: http.StatusCreated, Message: "Created", Data: &fiber.Map{"data": result}})
+}
+func GetAnimeByName(c *fiber.Ctx) error {
+	return c.Status(http.StatusAccepted).JSON(utils.GetAnimeById(c.Params("Id")))
 }

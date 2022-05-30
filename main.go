@@ -21,6 +21,8 @@ func main() {
 		return c.Next()
 	})
 	v1.Get("/anime", routers.Getanim)
+	v1.Post("/create", routers.CreateAnim)
+	v1.Get("/get/:Id", routers.GetAnimeByName)
 
 	app.Listen(":3000")
 }
